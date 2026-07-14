@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetroMart Department Store</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17212b;
+        --muted: #607080;
+        --line: #d9e0e7;
+        --paper: #ffffff;
+        --mist: #f4f7f9;
+        --navy: #153c50;
+        --teal: #007f7a;
+        --coral: #d85c3f;
+        --gold: #f2b544;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--mist);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header {
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 16px 20px;
+      }
+
+      .brand {
+        color: var(--navy);
+        font-size: 1.45rem;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .cart-button,
+      .primary-button {
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .cart-button {
+        background: var(--navy);
+        color: white;
+        padding: 10px 14px;
+      }
+
+      .hero {
+        background:
+          linear-gradient(90deg, rgba(21, 60, 80, 0.9), rgba(21, 60, 80, 0.45)),
+          url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=80") center/cover;
+        color: white;
+        min-height: 460px;
+      }
+
+      .hero-inner {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 86px 20px 64px;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 7vw, 5rem);
+        line-height: 0.98;
+        margin: 14px 0 18px;
+        max-width: 720px;
+      }
+
+      .hero p {
+        font-size: 1.14rem;
+        line-height: 1.6;
+        max-width: 560px;
+      }
+
+      .primary-button {
+        background: var(--coral);
+        color: white;
+        margin-top: 18px;
+        padding: 13px 20px;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 30px 20px 56px;
+      }
+
+      .promo-strip {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: -54px;
+        padding: 18px;
+        position: relative;
+      }
+
+      .promo {
+        border-left: 4px solid var(--teal);
+        padding: 4px 16px;
+      }
+
+      .promo strong,
+      .department strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .promo span,
+      .department span,
+      .product-meta {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .section-heading {
+        align-items: end;
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        margin: 34px 0 16px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        margin: 0;
+      }
+
+      .department-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .department {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        min-height: 110px;
+        padding: 18px;
+      }
+
+      .product-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .product-card img {
+        aspect-ratio: 4 / 3;
+        display: block;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .product-body {
+        padding: 16px;
+      }
+
+      .badge {
+        background: #e9f7f5;
+        border-radius: 999px;
+        color: var(--teal);
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        padding: 5px 9px;
+      }
+
+      .product-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+
+      .product-footer {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 14px;
+      }
+
+      .price {
+        color: var(--navy);
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .add-button {
+        background: var(--gold);
+        border: 0;
+        border-radius: 6px;
+        color: #2a220c;
+        cursor: pointer;
+        font-weight: 800;
+        min-height: 38px;
+        padding: 9px 12px;
+      }
+
+      .status {
+        color: var(--muted);
+        min-height: 24px;
+      }
+
+      footer {
+        background: var(--navy);
+        color: white;
+        padding: 24px 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 860px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+        }
+
+        .promo-strip,
+        .department-grid,
+        .product-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero {
+          min-height: 420px;
+        }
+
+        .hero-inner {
+          padding-top: 60px;
+        }
+
+        .promo-strip,
+        .department-grid,
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav" aria-label="Main navigation">
+        <div class="brand">MetroMart</div>
+        <div class="nav-links">
+          <span>Fashion</span>
+          <span>Electronics</span>
+          <span>Home</span>
+          <span>Beauty</span>
+          <span>Offers</span>
+        </div>
+        <button class="cart-button" type="button" id="cartButton">Cart 0</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">One store, every department</div>
+        <h1>MetroMart Department Store</h1>
+        <p>
+          Discover everyday essentials, smart home upgrades, polished outfits,
+          and gift-ready finds from every floor of the store.
+        </p>
+        <button class="primary-button" type="button" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">
+          Shop featured finds
+        </button>
+      </div>
+    </section>
+
+    <main>
+      <section class="promo-strip" aria-label="Store benefits">
+        <div class="promo">
+          <strong>Same-day pickup</strong>
+          <span>Ready in 2 hours at participating locations.</span>
+        </div>
+        <div class="promo">
+          <strong>Member savings</strong>
+          <span>Extra offers across seasonal departments.</span>
+        </div>
+        <div class="promo">
+          <strong>Easy returns</strong>
+          <span>Bring online orders to any customer desk.</span>
+        </div>
+      </section>
+
+      <section aria-labelledby="departments-heading">
+        <div class="section-heading">
+          <h2 id="departments-heading">Shop By Department</h2>
+          <div class="status" id="departmentStatus">Loading departments...</div>
+        </div>
+        <div class="department-grid" id="departments"></div>
+      </section>
+
+      <section aria-labelledby="products-heading" id="products">
+        <div class="section-heading">
+          <h2 id="products-heading">Featured Products</h2>
+          <div class="status" id="productStatus">Loading products...</div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+    </main>
+
+    <footer>
+      MetroMart Department Store | Built with Node.js, Nginx, Docker Compose, and Jenkins
+    </footer>
+
+    <script>
+      const formatter = new Intl.NumberFormat('en-US', {
+        currency: 'USD',
+        style: 'currency'
+      });
+
+      let cartCount = 0;
+
+      function addToCart() {
+        cartCount += 1;
+        document.getElementById('cartButton').textContent = `Cart ${cartCount}`;
+      }
+
+      async function loadDepartments() {
+        const status = document.getElementById('departmentStatus');
+        const container = document.getElementById('departments');
+
+        try {
+          const response = await fetch('/api/departments');
+          const departments = await response.json();
+
+          container.innerHTML = departments.map((department) => `
+            <article class="department">
+              <strong>${department.name}</strong>
+              <span>${department.aisles} curated aisles</span>
+            </article>
+          `).join('');
+          status.textContent = `${departments.length} departments open today`;
+        } catch (error) {
+          status.textContent = 'Departments are unavailable right now.';
+        }
+      }
+
+      async function loadProducts() {
+        const status = document.getElementById('productStatus');
+        const container = document.getElementById('productGrid');
+
+        try {
+          const response = await fetch('/api/products');
+          const products = await response.json();
+
+          container.innerHTML = products.map((product) => `
+            <article class="product-card">
+              <img src="${product.image}" alt="${product.name}" loading="lazy" />
+              <div class="product-body">
+                <span class="badge">${product.badge}</span>
+                <div class="product-title">${product.name}</div>
+                <div class="product-meta">${product.category}</div>
+                <div class="product-footer">
+                  <span class="price">${formatter.format(product.price)}</span>
+                  <button class="add-button" type="button" onclick="addToCart()">Add</button>
+                </div>
+              </div>
+            </article>
+          `).join('');
+          status.textContent = `${products.length} featured products`;
+        } catch (error) {
+          status.textContent = 'Products are unavailable right now.';
+        }
+      }
+
+      loadDepartments();
+      loadProducts();
+    </script>
+  </body>
+</html>

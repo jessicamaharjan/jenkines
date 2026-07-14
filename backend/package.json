@@ -1,0 +1,13 @@
+{
+  "name": "department-store-backend",
+  "version": "1.0.0",
+  "description": "Backend API for a department store demo app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
+  }
+}
